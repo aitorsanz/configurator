@@ -41,7 +41,7 @@ gen = function()
 
 /* We handle the server name configuration as a special case below. */
   var text = "[" + cluster_name + "]<br/>";
-  var serv = $("#cfgservers").val().split("\n");
+  var serv = $("#cfgservers").val().split("\n").filter(function(x){return(x);});
   var instances_per_server = $("#cfgnuminstances").val();
   if ( instances_per_server != parseInt(instances_per_server))
   {
