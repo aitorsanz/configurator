@@ -112,7 +112,7 @@ gen = function()
   text += "result-prefetch-queue-size=" + cores_per_query + "<br/>";
   text += "operator-threads=" + cores_per_query + "<br/>";
   
-  var disks = $("#cfgdisks").val().split("\n");
+  var disks = $("#cfgdisks").val().split("\n").filter(function(x){return(x);});
   var num_disks = disks.length;
   var num_servers = serv.length;
   var server_num=0;
