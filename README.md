@@ -9,4 +9,5 @@ http://htmlpreview.github.com/?https://raw.github.com/Paradigm4/configurator/mas
 
 Alternatively, you may download the file config.14.7.html and run it on your machine.
 
-To build config.ini for an earlier SciDB release, you may visit the above link but alter the release number in the URL to what you want.
+To build config.ini for an earlier SciDB release, you may visit the above link
+but alter the release number in the URL to what you want.
