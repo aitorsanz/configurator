@@ -33,7 +33,18 @@ if($("#base-path").val().length < 1)
 alert("Please enter a SciDB base data path, for example /home/scidb/data.");
 return;
 }
-var cluster_name=$("#cfgcluster").val();
+var cluster_name=$("#cfgcluster").val().trim();
+if ( cluster_name == '' ||  /[A-Z]/.test(cluster_name) )
+{
+alert("Cluster name cannot be empty and cannot contain upper-case letters.");
+return;
+}
+var db_user=$("#db_user").val().trim();
+if ( db_user == '' ||  /[A-Z]/.test(db_user) )
+{
+alert("Postgres user cannot be empty and cannot contain upper-case letters.");
+return;
+}
 /* We handle the server name configuration as a special case below. */
 var text = "[" + cluster_name + "]<br/>";
 var serv = $("#cfgservers").val().split("\n").filter(function(x){return(x);});
