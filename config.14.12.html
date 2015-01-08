@@ -54,6 +54,11 @@ if ( instances_per_server != parseInt(instances_per_server))
 alert("The number of SciDB instances per server must be an integer.");
 return;
 }
+if (instances_per_server < 1)
+{
+alert("The number of SciDB instances per server must be positive.");
+return;
+}
 var cnt = 0;
 for(var x in serv)
 {
@@ -75,7 +80,6 @@ text += "," + instances_per_server + "<br/>";
 */
 var root = $("#install_root").val();
 text += "install_root=" + root + "<br/>";
-text += "metadata=" + root + "/share/scidb/meta.sql" + "<br/>";
 text += "pluginsdir="+ root + "/lib/scidb/plugins" + "<br/>";
 text += "logconf="+ root + "/share/scidb/log4cxx.properties" + "<br/>";
 /* All the rest of the configuration options are handled in a simple loop.
@@ -97,6 +101,16 @@ text += (obj.value + "<br/>");
 }
 });
 var max_connections = $("#cfg_max_connections").val();
+if ( max_connections != parseInt(max_connections))
+{
+alert("The max number of connections must be an integer.");
+return;
+}
+if (max_connections < 1)
+{
+alert("The max number of connections must be at least 1.");
+return;
+}
 var cpu_cores = $("#cfg_cpu_cores").val();
 if (cpu_cores > 0)
 {
