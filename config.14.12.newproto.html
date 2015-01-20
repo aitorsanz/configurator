@@ -201,7 +201,7 @@ gen = function()
   text += "smgr-cache-size=" + Math.round(cache_share / 2) + " #per instance<br/>";
   text += "mem-array-threshold=" + Math.round(cache_share / 2) + " #per instance<br/>";
   text += "# sort: "+ Math.round(sort_share) + "MB per instance<br/>";
-  text += "merge-sort_buffer=" + Math.round(sort_share / (total_query_threads)) + " #per query thread<br/>";
+  text += "merge-sort-buffer=" + Math.round(sort_share / (total_query_threads)) + " #per query thread<br/>";
   text += "# NOTE: Uncomment the following line to set a hard memory limit;<br/># NOTE: queries exceeding this cap will fail:<br/>";
   text += "# max-memory-limit=" + memory_per_instance + " #per instance<br/>";
 
