@@ -190,20 +190,22 @@ gen = function()
   network_multiplier = network_share / network_mem;
   text += "<br/>### Memory: "+Math.round(memory_per_instance)+"MB per instance, "+Math.round(reserved_memory_per_instance)+"MB reserved <br/>";
   text += "# network: " + Math.round(network_mem * network_multiplier) + "MB per instance assuming " + avg_chunk_size + "MB average chunks<br/>";
-  text += "sg-send-queue-size=" + (Math.round(total_instances * network_multiplier)) + " #(chunks) per query<br/>";
-  text += "sg-receive-queue-size=" + (Math.round(total_instances * network_multiplier)) + " #(chunks) per query<br/>";
+  text += "# in units of chunks per query:"
+  text += "sg-send-queue-size=" + (Math.round(total_instances * network_multiplier)) + "<br/>";
+  text += "sg-receive-queue-size=" + (Math.round(total_instances * network_multiplier)) + "<br/>";
   if ( redundancy > 0 )
   {
-    text += "replication-send-queue-size=" + Math.round(total_query_threads * network_multiplier) + " #(chunks) per instance<br/>";
-    text += "replication-receive-queue-size=" + Math.round(total_instances * network_multiplier) + " #(chunks) per instance<br/>";
+    text += "# in units of chunks per instance:"
+    text += "replication-send-queue-size=" + Math.round(total_query_threads * network_multiplier) + "<br/>";
+    text += "replication-receive-queue-size=" + Math.round(total_instances * network_multiplier) + "<br/>";
   }
   text += "# caches: "+ Math.round(cache_share) + "MB per instance<br/>";
-  text += "smgr-cache-size=" + Math.round(cache_share / 2) + " #per instance<br/>";
-  text += "mem-array-threshold=" + Math.round(cache_share / 2) + " #per instance<br/>";
-  text += "# sort: "+ Math.round(sort_share) + "MB per instance<br/>";
-  text += "merge-sort-buffer=" + Math.round(sort_share / (total_query_threads)) + " #per query thread<br/>";
+  text += "smgr-cache-size=" + Math.round(cache_share / 2) + "<br/>";
+  text += "mem-array-threshold=" + Math.round(cache_share / 2) + "<br/>";
+  text += "# sort: "+ Math.round(sort_share) + "MB per instance (specified per thread)<br/>";
+  text += "merge-sort-buffer=" + Math.round(sort_share / (total_query_threads)) + "<br/>";
   text += "# NOTE: Uncomment the following line to set a hard memory limit;<br/># NOTE: queries exceeding this cap will fail:<br/>";
-  text += "# max-memory-limit=" + memory_per_instance + " #per instance<br/>";
+  text += "# max-memory-limit=" + memory_per_instance + "<br/>";
 
   /* Disks */
   var disks = $("#cfgdisks").val().split("\n").filter(function(x){return(x);});
